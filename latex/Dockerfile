@@ -34,5 +34,19 @@ RUN apt-get update && apt-get install -y \
   # Removing documentation packages *after* installing them is kind of hacky,
   # but it only adds some overhead while building the image.
   apt-get --purge remove -y .\*-doc$ && \
-  # Remove more unnecessary stuff
   apt-get clean -y
+
+RUN wget --quiet -nc \
+  --directory-prefix build/img \
+  -nd https://github.com/jgm/pandoc/releases/download/2.9.2/pandoc-2.9.2-1-amd64.deb
+
+RUN dpkg -i build/img/pandoc-2.9.2-1-amd64.deb
+
+RUN apt-get update && apt-get install -y python3-pip
+
+RUN pip3 -q install pandocfilters
+
+RUN wget -nc --directory-prefix build/img \
+  -nd https://www.tug.org/fonts/getnonfreefonts/install-getnonfreefonts
+
+RUN texlua build/img/install-getnonfreefonts && getnonfreefonts --sys -a

@@ -2,10 +2,15 @@
 
 Here are some Dockerfiles.
 
-Since Docker Hub does not have GitLab integration (as of the writing of this
-file), this repository is hosted both [on GitLab][gl] and [on GitHub][gh].
+## latex
 
+This was forked and extended from [https://gitlab.com/aergus/dockerfiles](gl) and therefore the "latex" Dockerfile
+inherits that [CC0 licence](./LICENSE.txt). I've added some modifications to it in order to support my thesis-building
+project.
 
 [gl]: https://gitlab.com/aergus/dockerfiles
-[gh]: https://github.com/aergus/dockerfiles
 
+
+## corretto11
+
+This is a general purpose corretto11 runtime which I use for some private projects.
